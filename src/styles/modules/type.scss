@@ -1,0 +1,35 @@
+@font-face {
+  font-family: Primary;
+  font-style: normal;
+  src: url('fonts/PPFormula-NarrowSemibold.woff2') format('woff2'), url('fonts/PPFormula-NarrowSemibold.woff') format('woff'), url('fonts/PPFormula-NarrowSemibold.ttf') format('ttf');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: white;
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Primary;
+}
+
+// Paragraph
+p {
+  font-size: 1rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+i {
+  font-style: italic;
+}

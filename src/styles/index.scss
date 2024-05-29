@@ -1,0 +1,12 @@
+:root {
+  --r-background-color: rgb(20, 20, 20);
+  --color--white: rgb(255, 255, 255);
+}
+
+@import 'modules/reset.scss';
+@import 'modules/base.scss';
+@import 'modules/reveal.scss';
+@import 'modules/type.scss';
+@import 'modules/chapter.scss';
+@import 'modules/overlay-navigation.scss';
+@import 'modules/material-symbols.scss';

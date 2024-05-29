@@ -1,0 +1,20 @@
+.chapter-divider {
+  width: 100vw;
+  height: 100vh;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.chapter-divider__headline {
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+.overlay-navigation__chapter-title {
+  font-style: italic;
+}
+
+.overlay-navigation__page-title {
+  font-style: italic;
+}
