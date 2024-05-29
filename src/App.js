@@ -53,6 +53,14 @@ export default class App {
         })
       }
 
+      // Handle bigger font in intro
+      if (_e.indexh <= 1) {
+        console.log(document.querySelector('.overlay-navigation__section--bottom'))
+        document.querySelector('.overlay-navigation__section--bottom').classList.add('overlay-navigation__section--bottom--intro')
+      } else {
+        document.querySelector('.overlay-navigation__section--bottom').classList.remove('overlay-navigation__section--bottom--intro')
+      }
+
       this.flags.previousH = _e.indexh
     })
 
