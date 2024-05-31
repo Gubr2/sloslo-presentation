@@ -16,6 +16,7 @@
   "dependencies": {
     "gsap": "^3.12.5",
     "reveal.js": "^5.1.0",
-    "split-type": "^0.3.4"
+    "split-type": "^0.3.4",
+    "timer-node": "^5.0.7"
   }
 }

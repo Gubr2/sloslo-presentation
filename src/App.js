@@ -1,6 +1,7 @@
 import 'reveal.js/dist/reveal.css'
 import './styles/index.scss'
 import Reveal from 'reveal.js'
+import { Timer, Time, TimerOptions } from 'timer-node'
 
 import Animations from './modules/Animations'
 
@@ -54,11 +55,10 @@ export default class App {
       }
 
       // Handle bigger font in intro
-      if (_e.indexh <= 1) {
-        console.log(document.querySelector('.overlay-navigation__section--bottom'))
-        document.querySelector('.overlay-navigation__section--bottom').classList.add('overlay-navigation__section--bottom--intro')
+      if (_e.indexh <= 1 || this.deck.isLastSlide()) {
+        document.querySelector('.overlay-navigation').classList.add('overlay-navigation--intro')
       } else {
-        document.querySelector('.overlay-navigation__section--bottom').classList.remove('overlay-navigation__section--bottom--intro')
+        document.querySelector('.overlay-navigation').classList.remove('overlay-navigation--intro')
       }
 
       this.flags.previousH = _e.indexh
@@ -72,6 +72,11 @@ export default class App {
         this.handlePageTransition('prev')
       }
     })
+
+    // Set Countdown
+    this.timer = new Timer()
+
+    this.setTimer()
   }
 
   handlePageTransition(_direction) {
@@ -91,6 +96,8 @@ export default class App {
       // Animate In Intro
       if (this.deck.isFirstSlide()) {
         this.animations.fadePresentation('in')
+        this.timer.stop()
+        this.timer.start()
       }
 
       if (this.deck.isLastSlide()) {
@@ -121,6 +128,20 @@ export default class App {
         this.animations.fadePresentation('out')
       }
 
+      // Animate Circle
+      if (document.querySelector('section .present').classList.contains('link-to-project')) {
+        this.animations.animateInLinkToProject()
+      }
+
+      // Play Video
+      let videos = [...document.querySelectorAll('section .present video')]
+      if (videos.length > 0) {
+        videos.forEach((_video) => {
+          _video.currentTime = 0
+          _video.play()
+        })
+      }
+
       // Fade In Chapter Divider
       Promise.all([
         //
@@ -134,9 +155,15 @@ export default class App {
 
   handlePageTitle(_selector, _content) {
     if (_content) {
-      document.querySelector(_selector).textContent = _content
+      document.querySelector(_selector).innerHTML = _content
     } else {
-      document.querySelector(_selector).textContent = ''
+      document.querySelector(_selector).innerHTML = ''
     }
+  }
+
+  setTimer() {
+    this.countownInterval = setInterval(() => {
+      document.querySelector('.overlay-navigation__timer').textContent = this.timer.time().m.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + this.timer.time().s.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })
+    }, 1000)
   }
 }

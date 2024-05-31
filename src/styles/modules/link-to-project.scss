@@ -1,0 +1,29 @@
+.link-to-project {
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50rem;
+    height: 50rem;
+  }
+}
+
+.link-to-project__circle {
+  stroke-width: 0.025rem;
+  fill: none;
+  stroke: var(--color--white);
+  transform-origin: center;
+  transform: rotate(-90deg);
+}
+
+.link-to-project__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color--white);
+  span {
+    font-size: 4.8rem;
+  }
+}

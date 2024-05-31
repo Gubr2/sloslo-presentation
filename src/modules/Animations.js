@@ -219,7 +219,7 @@ export default class Animations {
       tl.fromTo(
         '.overlay-navigation__logotype',
         {
-          width: '18%',
+          width: '23.25%',
           scale: 1.5,
         },
         {
@@ -266,5 +266,41 @@ export default class Animations {
         })
       }
     })
+  }
+
+  animateInLinkToProject() {
+    // Circle
+    this.linkToProjectCircle = document.querySelector('.link-to-project__circle')
+    this.linkToProjectCircleLength = this.linkToProjectCircle.getTotalLength()
+    this.linkToProjectCircle.style.strokeDasharray = this.linkToProjectCircleLength
+
+    gsap.fromTo(
+      this.linkToProjectCircle,
+      {
+        strokeDashoffset: this.linkToProjectCircleLength,
+      },
+      {
+        strokeDashoffset: 0,
+        duration: 1.5,
+        ease: 'expo.inOut',
+      }
+    )
+
+    // Icon
+    gsap.fromTo(
+      '.link-to-project__icon .material-symbols-outlined',
+      {
+        autoAlpha: 0,
+        x: '-4.8rem',
+        y: '4.8rem',
+      },
+      {
+        autoAlpha: 1,
+        x: '0rem',
+        y: '0rem',
+        duration: 1.5,
+        ease: 'expo.inOut',
+      }
+    )
   }
 }
